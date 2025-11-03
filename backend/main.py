@@ -163,7 +163,6 @@ async def getDeals(token: str, website: str):
     if (not token or token == None):
         return []
     endpoint: str = getDealsUrlTemplate.replace("DOMAIN_PLACEHOLDER", website)
-    print(endpoint)
     headers = {
         "Content-type": "application/json"
     }
@@ -173,13 +172,7 @@ async def getDeals(token: str, website: str):
     responseObj: dict = requests.post(endpoint, headers=headers, cookies=cookies).json()
     dealsResponse: DealsResponse = (DealsResponse)(**responseObj)
     for deal in dealsResponse.data:
-        # filesRequest: dict = {
-        #     "dealId": str(deal["id"]),
-        #     "website": website,
-        #     "token": token
-        # }
         deal["fileUrl"] = await getAttachment(dealId=str(deal["id"]), website=website, token=token)
-    print(dealsResponse)
     return dealsResponse.data
 
 @app.post("/login")
@@ -217,7 +210,6 @@ async def login(response: Response, req: Request):
         }
 
 async def getAttachment(dealId, website, token):
-    print("IN GET ATTACHMENT")
     try:
         endpoint = getAttachmentsUrlTemplate.replace("DOMAIN_PLACEHOLDER", website).replace("DEAL_ID_PLACEHOLDER", dealId)
         headers = {
@@ -233,18 +225,7 @@ async def getAttachment(dealId, website, token):
             attachmentObj = filesResponse.data[attachmentId]
             attachment: AttachmentData = (AttachmentData)(**attachmentObj)
             return attachment.file_url
-            # fileResponseRaw = requests.get(attachment.file_url)
-            # fileResponseBlob = fileResponseRaw.text
-            # fileName: str = attachment.name
-            # fileTxt = open(fileName, "w")
-            # fileTxt.write(fileResponseBlob)
-            # fileTxt.close()
-            # return fileName
         return False
     except Exception as e:
         print(e)
-
-@app.get("/download")
-def downloadFile(f: str):
-    return FileResponse(path=f, filename=f)
-    # return response
+        return False
