@@ -1,0 +1,69 @@
+
+.errorMsg {
+  color: darkred;
+  text-decoration: underline;
+}
+.container {
+  gap: 1rem;
+  margin-top: 1rem;
+  text-align: -webkit-center;
+}
+.custom-card {
+  background-color: lightgoldenrodyellow;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: 2px solid grey;
+  border-radius: 15px;
+  color: orange;
+}
+.custom-card:hover {
+  animation: mymove 2.5s infinite;
+  box-shadow: 0 8px 16px #839f98;
+}
+@keyframes mymove {
+  50% {box-shadow: 5px 10px 15px #f8fcfb;}
+}
+.title {
+  margin: 0 0 0.5rem;
+  color: #be7602;
+}
+.cardInfo {
+  font-size: 0.9rem;
+  color: #b9821d;
+}
+.description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.4;
+}
+.attachmentLink {
+  color: #b9821d;
+}
+.dealsTitle {
+  margin-bottom: 3rem;
+}
+.dealsSpan {
+  display: inline-block;
+}
+.logo {
+  width: 100px;
+}
+.welcomeElm {
+  margin-top: 20;
+  text-align: left;
+  color: #b9821d;
+}
+h1,h2,h3,h4,h5 {
+  color: #b17300;
+}
+.dealsArea {
+  text-align: left;
+}
+.mainContainer {
+  background-color: rgb(188, 228, 218);
+  min-height: 800px;
+  padding: 15px;
+  margin: 50px auto;
+  text-align: center;
+}
