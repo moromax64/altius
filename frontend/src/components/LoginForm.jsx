@@ -15,8 +15,6 @@ export default function LoginForm({ onResult }) {
     try {
       const res = await sendLoginRequest({ website, username, password });
       let resData = await res.json();
-      console.log("resData: ", resData)
-      // here we may want to store token as cookie
       onResult({...resData, website: website});
     } catch (err) {
       setError(err.message || "Login failed");
@@ -26,8 +24,6 @@ export default function LoginForm({ onResult }) {
   };
 
   let loginFormStyle = { borderRadius: "6px", minWidth: "20%", fontSize: "1.5rem" }
-  let websiteNameStyle = {fontSize: "1.4rem", color: "darkgrey"}
-  // let btnStyle = { backgroundColor: loading ? "darkgrey" : "orange", color: "#8d5906ff", borderRadius: "20px", fontSize: "1.4rem" }
 
   return (
     <form onSubmit={handleSubmit}>
